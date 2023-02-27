@@ -1,2 +1,7 @@
 requests
 boto3
+numpy
+pandas
+beautifulsoup4
+lxml
+python-dotenv
