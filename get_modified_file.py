@@ -11,7 +11,7 @@ def get_last_mod_file(s3bucketname, file_type=None, substring_to_match=""):
     last_modified_date = datetime(1939, 9, 1).replace(tzinfo=None)
 
     if any(my_bucket.objects.all()) is False:
-        last_modified_file = "None"
+        last_modified_file = "None Modified"
 
     for file in my_bucket.objects.all():
         print(file.key)
