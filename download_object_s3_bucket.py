@@ -1,6 +1,10 @@
 import boto3
 import logging
+import os
+from dotenv import load_dotenv
 from botocore.exceptions import ClientError
+
+load_dotenv()
 
 
 def download_file_from_s3(s3bucketname, s3_keyname, local_filename):
@@ -24,5 +28,5 @@ def download_file_from_s3(s3bucketname, s3_keyname, local_filename):
 
 # Testing
 download_file_from_s3(
-    "test-jmp-book-aaronkyle", "upload_test.pdf", "download_test_aaron.pdf"
+    os.environ["S3BUCKET_NAME"], os.environ["KEY_NAME"], os.environ["PDF_SAVE_AS_NAME"]
 )

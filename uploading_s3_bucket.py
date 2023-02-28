@@ -1,4 +1,8 @@
 import boto3
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def s3_upload(s3_bucket_name, local_filename, s3_keyname):
@@ -16,4 +20,4 @@ def s3_upload(s3_bucket_name, local_filename, s3_keyname):
 
 
 # Testing
-s3_upload("test-jmp-book-aaronkyle", "requirements.txt", "upload_test.pdf")
+s3_upload(os.environ["S3BUCKET_NAME"], "requirements.txt", "upload_test.pdf")

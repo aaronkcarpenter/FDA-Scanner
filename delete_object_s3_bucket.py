@@ -1,8 +1,12 @@
 import boto3
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 s3 = boto3.client("s3")
-bucket_name = "test-jmp-book-aaronkyle"
-key_name = "upload_test.pdf"
+bucket_name = os.environ["S3BUCKET_NAME"]
+key_name = os.environ["KEY_NAME"]
 
 response = s3.delete_object(Bucket=bucket_name, Key=key_name)
 
@@ -33,4 +37,4 @@ def delete_bucket(bucket_name):
 
 
 # testing deletion of an object/bucket
-delete_bucket("test-jmp-book-aaronkyle")
+delete_bucket(os.environ["S3BUCKET_NAME"])

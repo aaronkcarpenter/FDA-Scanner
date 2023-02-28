@@ -1,6 +1,10 @@
 import logging
 import boto3
+import os
+from dotenv import load_dotenv
 from botocore.exceptions import ClientError
+
+load_dotenv()
 
 
 def create_bucket(bucket_name, region, ACL_type):
@@ -21,4 +25,4 @@ def create_bucket(bucket_name, region, ACL_type):
 
 
 # Testing The Function
-create_bucket("test-jmp-book-aaronkyle", "us-east-2", "private")
+create_bucket(os.environ["S3BUCKET_NAME"], os.environ["REGION_NAME"], "private")

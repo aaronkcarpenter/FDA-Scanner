@@ -1,12 +1,14 @@
 import boto3
 import json
+import os
 import sys
 import time
+from dotenv import load_dotenv
 
-
+load_dotenv()
 def create_topic_and_queue(topic_name, email_address):
-    sqs = boto3.client("sqs", region_name="us-east-2")
-    sns = boto3.client("sns", region_name="us-east-2")
+    sqs = boto3.client("sqs", region_name=os.environ['REGION_NAME'])
+    sns = boto3.client("sns", region_name=os.environ['REGION_NAME'])
     millis = str(int(round(time.time() * 1000)))
 
     # Create An SNS Topic
@@ -74,4 +76,4 @@ def create_topic_and_queue(topic_name, email_address):
     }
 
 
-response_dict = create_topic_and_queue("Test_Topic", "testdevacct2020@gmail.com")
+response_dict = create_topic_and_queue(os.environ['TOPIC_NAME'], os.environ['EMAIL_ADDRESS'])
